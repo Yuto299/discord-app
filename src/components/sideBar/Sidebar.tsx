@@ -12,10 +12,10 @@ const Sidebar = () => {
       {/* sidebarLeft */}
       <div className='sidebarLeft'>
         <div className='serverIcon'>
-          <img src='' alt='' />
+          <img src='./discordIcon.png' alt='' />
         </div>
         <div className='serverIcon'>
-          <img src='' alt='' />
+          <img src='./icon.png' alt='' />
         </div>
       </div>
       {/* sidebarRight */}
