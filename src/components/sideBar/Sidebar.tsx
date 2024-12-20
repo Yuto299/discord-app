@@ -7,32 +7,20 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SidebarChannel from './SidebarChannel';
 import { auth, db } from '../../firebase';
 import { useAppSelector } from '../../app/hooks';
-import { useEffect, useState } from 'react';
-import { onSnapshot, collection, query, DocumentData } from 'firebase/firestore';
-
-type Channel = {
-  id: string;
-  channel: DocumentData;
-};
+import useCollection from '../../hooks/useCollection';
+import { addDoc, collection } from 'firebase/firestore';
 
 const Sidebar = () => {
-  const [channels, setChannels] = useState<Channel[]>([]);
-
   const user = useAppSelector((state) => state.user);
-  const q = query(collection(db, 'channels')); //チャンネル名
-
-  useEffect(() => {
-    onSnapshot(q, (querySnapshot) => {
-      const channelsResults: Channel[] = [];
-      querySnapshot.docs.forEach((doc) =>
-        channelsResults.push({
-          id: doc.id,
-          channel: doc.data(),
-        })
-      );
-      setChannels(channelsResults);
-    });
-  }, [q]);
+  const { documents: channels } = useCollection('channels');
+  const addChannel = async () => {
+    const channelName: string | null = prompt('新しいチャンネルを作成します');
+    if (channelName) {
+      await addDoc(collection(db, 'channels'), {
+        channelName: channelName,
+      });
+    }
+  };
 
   return (
     <div className='sidebar'>
@@ -59,7 +47,7 @@ const Sidebar = () => {
               <ExpandMoreIcon />
               <h4>プログラミングチャンネル</h4>
             </div>
-            <AddIcon className='sidebarAddIcon' />
+            <AddIcon className='sidebarAddIcon' onClick={() => addChannel()} />
           </div>
           <div className='sidebarChannelList'>
             {channels.map((channel) => (
