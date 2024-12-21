@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { auth } from './firebase';
 import { login, logout } from './features/userSlice';
 import { ErrorBoundary } from 'react-error-boundary';
-import { fallbackRender } from './utils/fallBackRender';
+import { fallbackRender } from './utils/fallbackRender';
 
 function App() {
   const user = useAppSelector((state) => state.user);
