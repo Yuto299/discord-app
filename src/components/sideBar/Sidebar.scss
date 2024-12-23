@@ -31,10 +31,11 @@
   }
 
   .sidebarRight {
+    display: flex;
     background-color: #303136;
     width: 300px;
     position: relative;
-    flex-grow: 1;
+    flex-direction: column;
 
     .sidebarTop {
       color: #ffffff;
@@ -71,6 +72,7 @@
       align-items: center;
       justify-content: space-between;
       width: 93%;
+      padding-bottom: 10px;
       border-top: 1px solid #686a6e;
       padding-top: 10px;
       margin-left: -3px;
@@ -80,7 +82,7 @@
         align-items: center;
 
         img {
-          width: 50px;
+          width: 55px;
           border-radius: 50%;
           cursor: pointer;
         }

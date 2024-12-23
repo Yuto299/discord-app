@@ -22,8 +22,7 @@ const useCollection = (date: string) => {
       );
       setDocuments(channelsResults);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [date]);
   return { documents };
 };
 

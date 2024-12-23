@@ -12,7 +12,6 @@ import { fallbackRender } from './utils/fallbackRender';
 function App() {
   const user = useAppSelector((state) => state.user);
   // console.log(user);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -35,7 +34,7 @@ function App() {
 
   return (
     <div className='App'>
-      {user ? (
+      {user?.user ? ( //これが全ての原因だった
         <>
           <ErrorBoundary FallbackComponent={fallbackRender}>
             {/* sidebar */}

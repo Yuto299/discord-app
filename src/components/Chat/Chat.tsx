@@ -30,7 +30,6 @@ const Chat = () => {
 
     //channelsコレクションの中にあるmessageコレクションの中にメッセージ情報をいれる
     const collectionRef: CollectionReference<DocumentData> = collection(db, 'channels', String(channelId), 'messages');
-
     const docRef: DocumentReference<DocumentData> = await addDoc(collectionRef, {
       message: inputText,
       timestamp: serverTimestamp(),

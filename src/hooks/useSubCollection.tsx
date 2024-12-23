@@ -15,8 +15,8 @@ type Messages = {
 };
 
 const useSubCollection = (collectionName: string, subCollectionName: string) => {
-  const [subDocuments, setSubDocuments] = useState<Messages[]>([]); //set関数を使用しているので、documentsに格納される
   const channelId = useAppSelector((state) => state.channel.channelID);
+  const [subDocuments, setSubDocuments] = useState<Messages[]>([]); //set関数を使用しているので、documentsに格納される
 
   useEffect(() => {
     const collectionRef = collection(db, collectionName, String(channelId), subCollectionName);
