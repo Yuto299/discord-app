@@ -27,7 +27,6 @@ const Chat = () => {
 
   const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-
     //channelsコレクションの中にあるmessageコレクションの中にメッセージ情報をいれる
     const collectionRef: CollectionReference<DocumentData> = collection(db, 'channels', String(channelId), 'messages');
     const docRef: DocumentReference<DocumentData> = await addDoc(collectionRef, {
